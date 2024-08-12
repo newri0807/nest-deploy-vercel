@@ -22,7 +22,7 @@
 1. 리포지토리를 클론합니다:
 
    ```
-   git clone https://github.com/your-username/nestjs-movie-api.git
+   git clone https://github.com/newri0807/nest-deploy-vercel.git
    cd nestjs-movie-api
    ```
 
