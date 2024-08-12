@@ -1,73 +1,108 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# NestJS Movie API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+이 프로젝트는 NestJS를 사용하여 구현된 간단한 영화 정보 관리 API입니다. CRUD 작업을 지원하며, 영화의 제목, 감독, 개봉 연도 정보를 관리합니다.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 기능
 
-## Description
+- 모든 영화 목록 조회
+- 특정 영화 상세 정보 조회
+- 새로운 영화 정보 추가
+- 기존 영화 정보 수정
+- 영화 정보 삭제
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 시작하기
 
-## Installation
+### 필수 조건
 
-```bash
-$ npm install
+- Node.js (v14 이상)
+- npm (v6 이상)
+
+### 설치
+
+1. 리포지토리를 클론합니다:
+
+   ```
+   git clone https://github.com/your-username/nestjs-movie-api.git
+   cd nestjs-movie-api
+   ```
+
+2. 필요한 패키지를 설치합니다:
+
+   ```
+   npm install
+   ```
+
+3. 개발 서버를 실행합니다:
+   ```
+   npm run start:dev
+   ```
+
+이제 API가 `http://localhost:3000`에서 실행됩니다.
+
+## API 엔드포인트
+
+- GET `/movies`: 모든 영화 목록을 조회합니다.
+- GET `/movies/:id`: 특정 ID의 영화 정보를 조회합니다.
+- POST `/movies`: 새로운 영화 정보를 추가합니다.
+- PUT `/movies/:id`: 특정 ID의 영화 정보를 수정합니다.
+- DELETE `/movies/:id`: 특정 ID의 영화 정보를 삭제합니다.
+
+## 사용 예시
+
+### 모든 영화 조회
+
+```
+curl http://localhost:3000/movies
 ```
 
-## Running the app
+### 특정 영화 조회
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+curl http://localhost:3000/movies/1
 ```
 
-## Test
+### 새 영화 추가
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+curl -X POST http://localhost:3000/movies -H "Content-Type: application/json" -d '{"title": "새 영화", "director": "새 감독", "releaseYear": 2023}'
 ```
 
-## Support
+## 테스트
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+단위 테스트와 E2E 테스트를 실행하려면 다음 명령어를 사용합니다:
 
-## Stay in touch
+```
+npm run test
+npm run test:e2e
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## 구조
 
-## License
+```
+nomad-movie-api
+├─ .prettierrc
+├─ nest-cli.json
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ src
+│  ├─ app.controller.spec.ts
+│  ├─ app.controller.ts
+│  ├─ app.module.ts
+│  ├─ app.service.ts
+│  ├─ main.ts
+│  └─ movie
+│     ├─ movie.controller.spec.ts
+│     ├─ movie.controller.ts
+│     ├─ movie.entity.ts
+│     ├─ movie.module.ts
+│     ├─ movie.service.spec.ts
+│     └─ movie.service.ts
+├─ test
+│  ├─ app.e2e-spec.ts
+│  └─ jest-e2e.json
+├─ tsconfig.build.json
+├─ tsconfig.json
+└─ vercel.json
 
-Nest is [MIT licensed](LICENSE).
+```
